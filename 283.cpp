@@ -1,3 +1,4 @@
+//first solution thought
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
@@ -14,6 +15,24 @@ public:
                 last--;
             }
             start++;
+        }
+    }
+};
+
+//better solution
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int fast = 0, lastNonZeroEl = 0;
+        while(fast < nums.size()) {
+            if(nums[fast] != 0) {
+                nums[lastNonZeroEl] = nums[fast];
+                lastNonZeroEl++;
+            }
+            fast++;
+        }
+        for(int i = lastNonZeroEl; i < nums.size(); i++) {
+            nums[i] = 0;
         }
     }
 };
